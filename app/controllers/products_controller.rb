@@ -8,4 +8,10 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
   
+  def add_to_cart
+    @product = Product.find(params[:id])
+    current_cart.add_cart_item(@product)
+    redirect_back(fallback_location: root_path)  # 導回上一頁
+  end
+  
 end

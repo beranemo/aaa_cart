@@ -1,3 +1,6 @@
+<%= render partial: "shared/cart" %>
+
+<section id="product-list">
 <% @products.each do |product| %>
   <div class="product-box">
     <%= link_to product_path(product) do %>
@@ -5,7 +8,9 @@
       <%= product.name %><br>
     <% end %>
     $<%= product.price %>
+    <%= button_to 'Add to Cart', add_to_cart_product_path(product) %>    
   </div>
 <% end %>
 
 <%= paginate @products %>
+</section>
